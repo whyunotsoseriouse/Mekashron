@@ -1,0 +1,61 @@
+﻿@using System.Net;
+@model ResultViewModel
+@{
+    ViewData["Title"] = "Регистрация";
+}
+
+<div class="text-center">
+    <h2 class="display-6">Регистрация</h2>
+    <div class="offset-md-4 col-md-4 offset-sm-3 col-sm-6">
+        <form asp-action="Register" method="post">
+            <div class="mb-6">
+                <label for="inputEmail" class="form-label">Логин:</label>
+                <input type="email" class="form-control" id="inputEmail" name="inputEmail">
+            </div>
+            <div class="mb-6">
+                <label for="inputPassword" class="form-label">Пароль:</label>
+                <input type="password" class="form-control" id="inputPassword" name="inputPassword">
+            </div>
+            <div class="mb-6">
+                <label for="firstName" class="form-label">Имя:</label>
+                <input type="text" class="form-control" id="firstName" name="firstName">
+            </div>
+            <div class="mb-6">
+                <label for="lastName" class="form-label">Фамилия:</label>
+                <input type="text" class="form-control" id="lastName" name="lastName">
+            </div>
+            <div class="mb-6">
+                <label for="mobile" class="form-label">Телефон:</label>
+                <input type="tel" class="form-control" id="mobile" name="mobile">
+            </div>
+            
+            
+            <button type="submit" class="btn btn-primary mt-3">Регистрация</button>
+        </form>
+
+    </div>
+</div>
+
+@if (Model != null)
+    @if (Model.ResultCode != 1)
+    {
+        <div class="alert alert-danger mt-5" role="alert">
+            <h4 class="alert-heading">Ошибка</h4>
+            <p>Ошибка при регистрации</p>
+            <hr>
+            <p class="mb-0 text-break">
+                @Model.ResultString;
+            </p>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-success mt-5" role="alert">
+            <h4 class="alert-heading">Успешно!</h4>
+            <p>Регистрация успешно выполнена</p>
+            <hr>
+            <p class="mb-0 text-break">
+                @Model.ResultString;
+            </p>
+        </div>
+    }

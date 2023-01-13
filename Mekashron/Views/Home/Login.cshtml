@@ -1,0 +1,50 @@
+﻿@using System.Net;
+@model ResultViewModel
+@{
+    ViewData["Title"] = "Вход";
+}
+
+<div class="text-center">
+    <h3 class="display-6">Авторизация</h3>
+    <div class="offset-md-4 col-md-4 offset-sm-3 col-sm-6">
+        <form asp-action="Login" method="post">
+            <div class="mb-6">
+                <label for="inputEmail" class="form-label">Login</label>
+                <input type="email" class="form-control" id="inputEmail" name="inputEmail">
+
+            </div>
+            <div class="mb-6">
+                <label for="inputPassword" class="form-label">Password</label>
+                <input type="password" class="form-control" id="inputPassword" name="inputPassword">
+            </div>
+
+
+            <button type="submit" class="btn btn-primary mt-3">Войти</button>
+        </form>
+		
+    </div>
+</div>
+
+@if (Model!=null)
+@if (Model.ResultCode == -1)
+{
+	<div class="alert alert-danger mt-5" role="alert">
+	  <h4 class="alert-heading">Ошибка</h4>
+		<p>Пользователь не найден</p>
+		<hr>
+		<p class="mb-0 text-break">
+			@Model.ResultString;
+		</p>
+	</div>
+}
+else
+{
+	<div class="alert alert-success mt-5" role="alert">
+		<h4 class="alert-heading">Успешно!</h4>
+		<p>Авторизация успешно выполнена</p>
+		<hr>
+		<p class="mb-0 text-break">
+			@Model.ResultString;
+		</p>
+	</div>
+}
